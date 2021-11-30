@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/activity_main.xml" value="0.26268115942028986" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/bottom_navigation_view.xml" value="0.259375" />
+        <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/fragment_favourite.xml" value="0.259375" />
+        <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/fragment_home.xml" value="0.259375" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/fragment_profile.xml" value="0.259375" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/fragment_search.xml" value="0.259375" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/menu/menu_main.xml" value="0.259375" />

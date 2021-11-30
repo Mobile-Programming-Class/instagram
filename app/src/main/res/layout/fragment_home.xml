@@ -10,7 +10,7 @@
             android:id="@+id/nested_scroll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/header_layout">
+            android:layout_below="@id/header_layout">
 
         <RelativeLayout
                 android:layout_width="wrap_content"
