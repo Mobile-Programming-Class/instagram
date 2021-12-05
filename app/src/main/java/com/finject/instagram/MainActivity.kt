@@ -6,8 +6,15 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
+import com.finject.instagram.fragment.*
 
 class MainActivity : AppCompatActivity() {
+    var refreshListener: Refresh? = null
+    var homeFragment = HomeFragment(this)
+    var searchFragment = SearchFragment()
+    var galleryFragment = GalleryFragment()
+    var favouriteFragment = FavouriteFragment()
+    var profileFragment = ProfileFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,33 +31,36 @@ class MainActivity : AppCompatActivity() {
         val galleryBtn = findViewById<ImageView>(R.id.add_icon)
         val favouriteBtn = findViewById<ImageView>(R.id.heart_icon)
         val profileBtn = findViewById<ImageView>(R.id.profile_icon)
+        val insta = findViewById<ImageView>(R.id.insta_img)
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame, HomeFragment()).commit()
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame, homeFragment).commit()
 
         homeBtn.setOnClickListener(clickListener)
         searchBtn.setOnClickListener(clickListener)
         galleryBtn.setOnClickListener(clickListener)
         favouriteBtn.setOnClickListener(clickListener)
         profileBtn.setOnClickListener(clickListener)
+        insta.setOnClickListener{ refreshListener?.refresh() }
     }
 
     private val clickListener : View.OnClickListener = View.OnClickListener { view ->
         when (view.id) {
             R.id.home_icon -> {
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame, HomeFragment()).commit()
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame, homeFragment).commit()
             }
             R.id.search_icon -> {
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame, SearchFragment()).commit()
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame, searchFragment).commit()
             }
             R.id.add_icon -> {
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame, GalleryFragment()).commit()
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame, galleryFragment).commit()
             }
             R.id.heart_icon -> {
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame, FavouriteFragment()).commit()
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame, favouriteFragment).commit()
             }
             R.id.profile_icon -> {
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame, ProfileFragment()).commit()
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame, profileFragment).commit()
             }
         }
     }
+
 }

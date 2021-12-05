@@ -26,12 +26,11 @@
                     android:src="@drawable/ic_camera"/>
 
             <ImageView
-                    android:id="@+id/insta_img"
-                    android:layout_width="85dp"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_insta"/>
+                android:id="@+id/insta_img"
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_insta" />
 
             <ImageView
                     android:id="@+id/send_img"
@@ -47,11 +46,11 @@
     </androidx.cardview.widget.CardView>
 
     <FrameLayout
-            android:id="@+id/frame"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/header_layout"
-            android:layout_above="@+id/bottom_layout"/>
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_layout"
+        android:layout_below="@+id/header_layout" />
 
     <androidx.cardview.widget.CardView
             android:id="@+id/bottom_layout"
@@ -75,14 +74,13 @@
                 />
 
                 <ImageView
-                        android:id="@+id/search_icon"
-                        android:layout_width="@dimen/bottom_menu_size"
-                        android:layout_height="@dimen/bottom_menu_size"
-                        android:layout_centerVertical="true"
-                        android:layout_toStartOf="@+id/add_icon"
-                        android:layout_toEndOf="@+id/home_icon"
-                        android:src="@drawable/ic_big_search"
-                />
+                    android:id="@+id/search_icon"
+                    android:layout_width="@dimen/bottom_menu_size"
+                    android:layout_height="@dimen/bottom_menu_size"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@+id/add_icon"
+                    android:layout_toEndOf="@+id/home_icon"
+                    android:src="@drawable/ic_big_search" />
 
                 <ImageView
                         android:id="@+id/add_icon"
@@ -104,14 +102,13 @@
                 />
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/profile_icon"
-                        android:layout_width="@dimen/bottom_menu_size"
-                        android:layout_height="@dimen/bottom_menu_size"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="@dimen/menu_margin"
-                        android:src="@drawable/profile"
-                />
+                    android:id="@+id/profile_icon"
+                    android:layout_width="@dimen/bottom_menu_size"
+                    android:layout_height="@dimen/bottom_menu_size"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/menu_margin"
+                    android:src="@drawable/user" />
 
             </RelativeLayout>
 

@@ -8,19 +8,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.finject.instagram.MainActivity
 import com.finject.instagram.R
+import com.finject.instagram.Refresh
 import com.finject.instagram.adapter.PostAdapter
 import com.finject.instagram.adapter.StatusAdapter
 import com.finject.instagram.data.Post
 import com.finject.instagram.data.Status
 import com.google.gson.Gson
 
-class HomeFragment : Fragment() {
+class HomeFragment(private var thisContext: MainActivity) : Fragment(), Refresh {
+
+    val statusList = ArrayList<Status>()
+    val postList = ArrayList<Post>()
+
     override fun onCreateView(inflater: LayoutInflater, parent: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view = inflater.inflate(R.layout.fragment_home, parent, false)
 
         val activity = activity as Context
+        thisContext.refreshListener = this
 
         val instaStausList = view.findViewById<RecyclerView>(R.id.insta_status_list)
         val postViewList = view.findViewById<RecyclerView>(R.id.post_list)
@@ -34,8 +41,6 @@ class HomeFragment : Fragment() {
         val status = Gson().fromJson(statusJSON, Array<Status>::class.java)
         val post = Gson().fromJson(postJSON, Array<Post>::class.java)
 
-        val statusList = ArrayList<Status>()
-        val postList = ArrayList<Post>()
 
         for (i in 0 until status.size)
             statusList.add(Status(status[i].id, status[i].name, status[i].picture))
@@ -50,5 +55,15 @@ class HomeFragment : Fragment() {
         postViewList.adapter = postAdapter
 
         return view
+    }
+
+    override fun refresh () {
+        // 1. clear postList, clear statusList
+        // 2. call API data
+        // 3. insert to adapter
+        // 4. notifyDatasetChange
+
+        statusList.clear()
+        postList.clear()
     }
 }

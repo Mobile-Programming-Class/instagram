@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_purple"
     tools:context=".fragment.ProfileFragment">
 
     <RelativeLayout
@@ -55,7 +56,7 @@
             android:fontFamily="sans-serif"
             android:text="new york, usa"
             android:textAllCaps="true"
-            android:textColor="@color/address"
+            android:textColor="@color/white"
             android:textSize="14sp" />
 
         <ImageView
@@ -106,6 +107,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="followers"
+                    android:textStyle="bold"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="13sp" />
@@ -143,6 +145,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="following"
+                    android:textStyle="bold"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="13sp" />
@@ -164,35 +167,36 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/glass"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Email"
-                    android:textColor="@color/headings"
-                    android:textSize="13sp" />
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="joey@sharenofood.com"
-                    android:textColor="#000000"
+                    android:textColor="@color/white"
                     android:textSize="18sp" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
                     android:layout_marginTop="15dp"
-                    android:background="@color/grey" />
+                    android:layout_height="0dp"/>
 
             </LinearLayout>
 
@@ -200,28 +204,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:background="@drawable/glass"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Phone"
-                    android:textColor="@color/headings"
-                    android:textSize="13sp" />
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="+1-202-555-0157"
-                    android:textColor="#000000"
+                    android:textColor="@color/white"
                     android:textSize="18sp" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
                     android:layout_marginTop="15dp"
-                    android:background="@color/grey" />
+                    android:layout_height="0dp"/>
 
             </LinearLayout>
 
@@ -229,28 +234,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:background="@drawable/glass"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Twitter"
-                    android:textColor="@color/headings"
-                    android:textSize="13sp" />
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="@string/twitterUsername"
-                    android:textColor="#000000"
+                    android:textColor="@color/white"
                     android:textSize="18sp" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
                     android:layout_marginTop="15dp"
-                    android:background="@color/grey" />
+                    android:layout_height="0dp"/>
 
             </LinearLayout>
 
@@ -258,28 +264,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:background="@drawable/glass"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Facebook"
-                    android:textColor="@color/headings"
-                    android:textSize="13sp" />
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="facebook.com/joeytrib"
-                    android:textColor="#000000"
+                    android:textColor="@color/white"
                     android:textSize="18sp" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
                     android:layout_marginTop="15dp"
-                    android:background="@color/grey" />
+                    android:layout_height="1dp"/>
 
             </LinearLayout>
 
