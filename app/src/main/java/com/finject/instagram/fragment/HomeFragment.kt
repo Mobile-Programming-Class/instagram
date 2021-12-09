@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.finject.instagram.MainActivity
@@ -13,14 +14,18 @@ import com.finject.instagram.R
 import com.finject.instagram.Refresh
 import com.finject.instagram.adapter.PostAdapter
 import com.finject.instagram.adapter.StatusAdapter
-import com.finject.instagram.data.Post
-import com.finject.instagram.data.Status
+import com.finject.instagram.data.*
+import com.finject.instagram.service.DataServices
 import com.google.gson.Gson
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeFragment(private var thisContext: MainActivity) : Fragment(), Refresh {
 
     val statusList = ArrayList<Status>()
-    val postList = ArrayList<Post>()
+    val postList = ArrayList<PostGet>()
+    lateinit var postAdapter : PostAdapter
 
     override fun onCreateView(inflater: LayoutInflater, parent: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -36,22 +41,22 @@ class HomeFragment(private var thisContext: MainActivity) : Fragment(), Refresh 
         postViewList.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
 
         val statusJSON: String = activity.assets.open("status.json").bufferedReader().use { it.readText() }
-        val postJSON: String = activity.assets.open("post.json").bufferedReader().use { it.readText() }
+//        val postJSON: String = activity.assets.open("post.json").bufferedReader().use { it.readText() }
 
         val status = Gson().fromJson(statusJSON, Array<Status>::class.java)
-        val post = Gson().fromJson(postJSON, Array<Post>::class.java)
+//        val post = Gson().fromJson(postJSON, Array<Post>::class.java)
 
 
         for (i in 0 until status.size)
             statusList.add(Status(status[i].id, status[i].name, status[i].picture))
 
-        for (j in 0 until post.size)
-            postList.add(Post(post[j].id, post[j].name, post[j].logo, post[j].photo, post[j].likes, post[j].description))
+//        for (j in 0 until post.size)
+//            postList.add(Post(post[j].id, post[j].name, post[j].logo, post[j].photo, post[j].likes, post[j].description))
 
         val statusAdapter = StatusAdapter(activity,statusList)
         instaStausList.adapter = statusAdapter
 
-        val postAdapter = PostAdapter(activity, postList)
+        postAdapter = PostAdapter(activity, postList)
         postViewList.adapter = postAdapter
 
         return view
@@ -64,6 +69,57 @@ class HomeFragment(private var thisContext: MainActivity) : Fragment(), Refresh 
         // 4. notifyDatasetChange
 
         statusList.clear()
-        postList.clear()
+
+
+        val networkServices = DataServices.create()
+        val call = networkServices.getAllPosts()
+
+        call.enqueue(object: Callback<ResponsePostingGetAll> {
+            override fun onFailure(call: Call<ResponsePostingGetAll>, t: Throwable) {
+                println("On Failure")
+                println(t.message)
+                Toast.makeText(thisContext.applicationContext, "Failed Getting Response" + t.message,
+                    Toast.LENGTH_LONG).show()
+            }
+            override fun onResponse(call: Call<ResponsePostingGetAll>, response: Response<ResponsePostingGetAll>) {
+                Toast.makeText(thisContext.applicationContext, "Success Getting Response",
+                    Toast.LENGTH_LONG).show()
+                if (response.body() != null) {
+                    val data: ResponsePostingGetAll = response.body()!!
+                    Toast.makeText(thisContext.applicationContext, "Response body not null",
+                        Toast.LENGTH_LONG).show()
+                    if (data.data!!.isNotEmpty()) {
+                        postList.clear()
+                        for (post in data.data!!) {
+                            postList.add(PostGet(
+                                    post?.id,
+                                    data.message + post?.foto,
+                                    post?.caption,
+                                    post?.id_user,
+                                    post?.created_at,
+                                    post?.updated_at,
+                                    post?.sentiment,
+                                    User(post?.user?.id,
+                                        post?.user?.name,
+                                        post?.user?.email,
+                                        post?.user?.email_verified_at,
+                                        post?.user?.bio,
+                                        post?.user?.mobile,
+                                        post?.user?.city,
+                                        post?.user?.created_at,
+                                        post?.user?.updated_at,
+                                        data.message + post?.user?.avatar)))
+                        }
+                        if (postList.count() != 0) {
+                            println("Dataset isnt null")
+                            postAdapter.notifyDataSetChanged()
+                        }
+                    }
+                } else {
+                    Toast.makeText(thisContext.applicationContext, "Response Body Null on get fun",
+                        Toast.LENGTH_LONG).show()
+                }
+            }
+        })
     }
 }

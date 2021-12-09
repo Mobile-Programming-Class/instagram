@@ -7,7 +7,7 @@ import android.view.WindowManager
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import com.finject.instagram.fragment.*
-
+//php artisan serve --host=192.168.0.103 --port=80
 class MainActivity : AppCompatActivity() {
     var refreshListener: Refresh? = null
     var homeFragment = HomeFragment(this)

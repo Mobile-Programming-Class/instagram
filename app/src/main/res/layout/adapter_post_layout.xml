@@ -130,7 +130,7 @@
             android:layout_height="25dp"
             android:layout_centerVertical="true"
             android:layout_marginStart="15dp"
-            android:src="@drawable/profile"
+            android:src="@drawable/ic_user"
         />
 
         <EditText
