@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 
-private const val BASE_URL = "http://192.168.0.103:80/api/"
+private const val BASE_URL = "http://192.168.0.108:80/api/"
 
 interface NetworkServices {
 
@@ -84,7 +84,7 @@ interface NetworkServices {
     ): Call<General>
 
     // http://127.0.0.1:8000/api/comment/by-post-id/44
-    @GET("comment/by-post-id//{id}")
+    @GET("comment/by-post-id/{id}")
     fun getCommentByPostId(
         @Path("id") id: String
     ): Call<Comment>

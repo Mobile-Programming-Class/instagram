@@ -42,71 +42,70 @@
         <ImageButton
             android:id="@+id/btnSearch"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignTop="@+id/cvSearch"
             android:layout_alignBottom="@+id/cvSearch"
             android:layout_alignParentEnd="true"
-            android:layout_padding="0dp"
             android:layout_toEndOf="@id/cvSearch"
             android:background="@color/white"
             android:src="@drawable/ic_search_dark"
             tools:ignore="ButtonStyle" />
 
-            <RelativeLayout
-                android:id="@+id/searchOption"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/cvSearch"
-                android:background="@color/white"
-                android:elevation="0dp"
+        <RelativeLayout
+            android:id="@+id/searchOption"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/cvSearch"
+            android:background="@color/white"
+            android:elevation="0dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true">
+
+            <ImageView
+                android:id="@+id/searchPost"
+                android:layout_width="@dimen/bottom_menu_size"
+                android:layout_height="@dimen/bottom_menu_size"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true">
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="4dp"
+                android:layout_toStartOf="@+id/add_icon"
+                android:src="@drawable/ic_post" />
 
-                <ImageView
-                    android:id="@+id/searchPost"
-                    android:layout_width="@dimen/bottom_menu_size"
-                    android:layout_height="@dimen/bottom_menu_size"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_toStartOf="@+id/add_icon"
-                    android:src="@drawable/ic_post"
-                    android:layout_marginBottom="4dp" />
+            <TextView
+                android:id="@+id/activeSearchPost"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/add_icon"
+                android:layout_below="@id/searchPost"
+                android:background="@drawable/bg_ic_active" />
 
-                <TextView
-                    android:id="@+id/activeSearchPost"
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_toStartOf="@+id/add_icon"
-                    android:layout_below="@id/searchPost"
-                    android:background="@drawable/bg_ic_active" />
+            <ImageView
+                android:id="@+id/add_icon"
+                android:layout_width="@dimen/bottom_menu_size"
+                android:layout_height="@dimen/bottom_menu_size"
+                android:layout_centerInParent="true" />
 
-                <ImageView
-                    android:id="@+id/add_icon"
-                    android:layout_width="@dimen/bottom_menu_size"
-                    android:layout_height="@dimen/bottom_menu_size"
-                    android:layout_centerInParent="true" />
+            <ImageView
+                android:id="@+id/searchUser"
+                android:layout_width="@dimen/bottom_menu_size"
+                android:layout_height="@dimen/bottom_menu_size"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@+id/add_icon"
+                android:layout_marginBottom="4dp"
+                android:src="@drawable/user"
+                />
+            <TextView
+                android:id="@+id/activeSearchUser"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@+id/add_icon"
+                android:layout_below="@id/searchPost"
+                android:background="@drawable/bg_ic_active" />
 
-                <ImageView
-                    android:id="@+id/searchUser"
-                    android:layout_width="@dimen/bottom_menu_size"
-                    android:layout_height="@dimen/bottom_menu_size"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_toEndOf="@+id/add_icon"
-                    android:layout_marginBottom="4dp"
-                    android:src="@drawable/user"
-                    />
-                <TextView
-                    android:id="@+id/activeSearchUser"
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_toEndOf="@+id/add_icon"
-                    android:layout_below="@id/searchPost"
-                    android:background="@drawable/bg_ic_active" />
-
-            </RelativeLayout>
+</RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvImage"

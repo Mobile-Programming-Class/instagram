@@ -152,6 +152,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/bioLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linlay1">
@@ -225,5 +226,12 @@
         </LinearLayout>
 
     </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bioLayout"
+        tools:layout_editor_absoluteX="0dp"/>
 
 </RelativeLayout>

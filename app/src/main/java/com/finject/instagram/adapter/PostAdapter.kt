@@ -16,6 +16,7 @@ import com.finject.instagram.R
 
 class PostAdapter (val activity: Context, val postList: ArrayList<PostGet>) : RecyclerView.Adapter<PostAdapter.ViewHolder>() {
 
+    var listener: GalleryImageClickListener? = null
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val view = LayoutInflater.from(p0?.context).inflate(R.layout.adapter_post_layout, p0, false)
         return ViewHolder(view);
@@ -39,7 +40,14 @@ class PostAdapter (val activity: Context, val postList: ArrayList<PostGet>) : Re
         Glide.with(activity)
             .load(postList[p1].foto)
             .into(p0.photo)
+
+
+        // adding click or tap handler for our image layout
+        p0.photo.setOnClickListener {
+            listener?.onClick(p1)
+        }
     }
+
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name = itemView.findViewById<TextView>(R.id.brand_name)
         val logo = itemView.findViewById<ImageView>(R.id.logo)

@@ -1,6 +1,7 @@
 package com.finject.instagram.fragment
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,8 +11,10 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.finject.instagram.MainActivity
+import com.finject.instagram.PostActivity
 import com.finject.instagram.R
 import com.finject.instagram.Refresh
+import com.finject.instagram.adapter.GalleryImageClickListener
 import com.finject.instagram.adapter.PostAdapter
 import com.finject.instagram.adapter.StatusAdapter
 import com.finject.instagram.data.*
@@ -21,7 +24,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeFragment(private var thisContext: MainActivity) : Fragment(), Refresh {
+class HomeFragment(private var thisContext: MainActivity) : Fragment(), Refresh, GalleryImageClickListener {
 
     val statusList = ArrayList<Status>()
     val postList = ArrayList<PostGet>()
@@ -57,6 +60,7 @@ class HomeFragment(private var thisContext: MainActivity) : Fragment(), Refresh 
         instaStausList.adapter = statusAdapter
 
         postAdapter = PostAdapter(activity, postList)
+        postAdapter.listener = this
         postViewList.adapter = postAdapter
 
         return view
@@ -121,5 +125,16 @@ class HomeFragment(private var thisContext: MainActivity) : Fragment(), Refresh 
                 }
             }
         })
+    }
+
+    override fun onClick(position: Int) {
+        val intent = Intent(thisContext, PostActivity::class.java)
+        intent.putExtra("post_id", postList[position].id.toString())
+        intent.putExtra("post_foto", postList[position].foto.toString())
+        intent.putExtra("post_caption", postList[position].caption.toString())
+        intent.putExtra("likes", "-")
+        intent.putExtra("user_name", postList[position].user?.name.toString())
+        intent.putExtra("user_avatar", postList[position].user?.avatar.toString())
+        startActivity(intent)
     }
 }

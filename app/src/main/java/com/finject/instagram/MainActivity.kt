@@ -1,11 +1,13 @@
 package com.finject.instagram
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
+import com.finject.instagram.data.Post
 import com.finject.instagram.fragment.*
 //php artisan serve --host=192.168.0.103 --port=80
 class MainActivity : AppCompatActivity() {
