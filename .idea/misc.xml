@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/drawable-anydpi/ic_search.xml" value="0.26614583333333336" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/drawable-anydpi/ic_settings.xml" value="0.2734375" />
+        <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/drawable/bg_ic_active.xml" value="0.25052083333333336" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/drawable/bg_purple.xml" value="0.2734375" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/drawable/btn_bg.xml" value="0.26614583333333336" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/drawable/circle.xml" value="0.2635416666666667" />
@@ -21,6 +22,7 @@
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/fragment_home.xml" value="0.259375" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/fragment_search.xml" value="0.259375" />
+        <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/fragment_search_2.xml" value="0.23958333333333334" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/item_gallery.xml" value="0.25" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/item_search.xml" value="0.25" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/menu/menu_main.xml" value="0.259375" />

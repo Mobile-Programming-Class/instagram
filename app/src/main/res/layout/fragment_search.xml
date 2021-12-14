@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
-    android:fillViewport="true"
-    android:background="@drawable/bg_purple">
+    android:fillViewport="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,33 +14,105 @@
         android:padding="12dp"
         android:layout_marginTop="12dp">
 
-        <EditText
-            android:id="@+id/etInputName"
-            android:layout_width="match_parent"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvSearch"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:autofillHints="Input Nama Barang"
-            android:inputType="text"
-            tools:ignore="LabelFor" />
+            android:background="@drawable/glass"
+            app:cardElevation="0dp">
+
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:autofillHints="Input Nama Barang"
+                android:inputType="text"
+                tools:ignore="LabelFor" />
+
+        </androidx.cardview.widget.CardView>
+
 
         <ImageButton
             android:id="@+id/btnSearch"
-            android:layout_width="88dp"
-            android:layout_height="48dp"
-            android:layout_below="@id/etInputName"
-            android:layout_alignParentStart="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@+id/cvSearch"
+            android:layout_alignBottom="@+id/cvSearch"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/btn_bg"
-            android:src="@drawable/ic_search"
+            android:layout_padding="0dp"
+            android:layout_toEndOf="@id/cvSearch"
+            android:background="@color/white"
+            android:src="@drawable/ic_search_dark"
             tools:ignore="ButtonStyle" />
+
+            <RelativeLayout
+                android:id="@+id/searchOption"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/cvSearch"
+                android:background="@color/white"
+                android:elevation="0dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true">
+
+                <ImageView
+                    android:id="@+id/searchPost"
+                    android:layout_width="@dimen/bottom_menu_size"
+                    android:layout_height="@dimen/bottom_menu_size"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@+id/add_icon"
+                    android:src="@drawable/ic_post"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:id="@+id/activeSearchPost"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@+id/add_icon"
+                    android:layout_below="@id/searchPost"
+                    android:background="@drawable/bg_ic_active" />
+
+                <ImageView
+                    android:id="@+id/add_icon"
+                    android:layout_width="@dimen/bottom_menu_size"
+                    android:layout_height="@dimen/bottom_menu_size"
+                    android:layout_centerInParent="true" />
+
+                <ImageView
+                    android:id="@+id/searchUser"
+                    android:layout_width="@dimen/bottom_menu_size"
+                    android:layout_height="@dimen/bottom_menu_size"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@+id/add_icon"
+                    android:layout_marginBottom="4dp"
+                    android:src="@drawable/user"
+                    />
+                <TextView
+                    android:id="@+id/activeSearchUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@+id/add_icon"
+                    android:layout_below="@id/searchPost"
+                    android:background="@drawable/bg_ic_active" />
+
+            </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/btnSearch"
+            android:layout_below="@id/searchOption"
             android:layout_marginTop="8dp"
             android:padding="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

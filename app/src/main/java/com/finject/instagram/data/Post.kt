@@ -52,8 +52,8 @@ data class PostGet(
     @field:SerializedName("user")
     var user: User? = null,
 
-    @field:SerializedName("like")
-    var like: Int? = null
+    @field:SerializedName("like_count")
+    var like_count: Int? = null
 )
 /*
 "id": 44,

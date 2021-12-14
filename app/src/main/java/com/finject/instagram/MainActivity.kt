@@ -41,6 +41,8 @@ class MainActivity : AppCompatActivity() {
         favouriteBtn.setOnClickListener(clickListener)
         profileBtn.setOnClickListener(clickListener)
         insta.setOnClickListener{ refreshListener?.refresh() }
+
+        supportActionBar?.hide()
     }
 
     private val clickListener : View.OnClickListener = View.OnClickListener { view ->

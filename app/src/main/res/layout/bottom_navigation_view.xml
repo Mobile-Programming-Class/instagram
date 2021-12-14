@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.nhaarman.supertooltips.ToolTipRelativeLayout
+        android:id="@+id/tooltip_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="30dp"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/whiteish"
+        app:labelVisibilityMode="unlabeled"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_navigation_menu" />
+
+</merge>
