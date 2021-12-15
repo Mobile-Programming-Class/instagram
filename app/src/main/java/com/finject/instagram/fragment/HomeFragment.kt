@@ -30,6 +30,7 @@ class HomeFragment(private var thisContext: MainActivity) : Fragment(), Refresh,
 
     val statusList = ArrayList<Status>()
     val postList = ArrayList<PostGet>()
+    lateinit var instaStatusList : RecyclerView
     lateinit var postAdapter : PostAdapter
 
     override fun onCreateView(inflater: LayoutInflater, parent: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -39,10 +40,10 @@ class HomeFragment(private var thisContext: MainActivity) : Fragment(), Refresh,
         val activity = activity as Context
         thisContext.refreshListener = this
 
-        val instaStausList = view.findViewById<RecyclerView>(R.id.insta_status_list)
+        instaStatusList = view.findViewById<RecyclerView>(R.id.insta_status_list)
         val postViewList = view.findViewById<RecyclerView>(R.id.post_list)
 
-        instaStausList.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        instaStatusList.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         postViewList.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
 
         val statusJSON: String = activity.assets.open("status.json").bufferedReader().use { it.readText() }
@@ -59,7 +60,7 @@ class HomeFragment(private var thisContext: MainActivity) : Fragment(), Refresh,
 //            postList.add(Post(post[j].id, post[j].name, post[j].logo, post[j].photo, post[j].likes, post[j].description))
 
         val statusAdapter = StatusAdapter(activity,statusList)
-        instaStausList.adapter = statusAdapter
+        instaStatusList.adapter = statusAdapter
 
         postAdapter = PostAdapter(activity, postList)
         postAdapter.listener = this
@@ -76,8 +77,10 @@ class HomeFragment(private var thisContext: MainActivity) : Fragment(), Refresh,
 
         statusList.clear()
         if (thisContext.user != null) {
-            statusList.add(Status(thisContext.user?.id!!, thisContext.user?.name!!, thisContext.user?.avatar!!))
+            statusList[0] = Status(thisContext.user?.id!!, thisContext.user?.name!!, thisContext.user?.avatar!!)
+            instaStatusList.adapter?.notifyDataSetChanged()
         }
+
 
 
         val networkServices = DataServices.create()
@@ -117,7 +120,8 @@ class HomeFragment(private var thisContext: MainActivity) : Fragment(), Refresh,
                                         post?.user?.city,
                                         post?.user?.created_at,
                                         post?.user?.updated_at,
-                                        data.message + post?.user?.avatar)))
+                                        data.message + post?.user?.avatar),
+                                    post?.like_count))
                         }
                         if (postList.count() != 0) {
                             println("Dataset isnt null")
@@ -137,7 +141,7 @@ class HomeFragment(private var thisContext: MainActivity) : Fragment(), Refresh,
         intent.putExtra("post_id", postList[position].id.toString())
         intent.putExtra("post_foto", postList[position].foto.toString())
         intent.putExtra("post_caption", postList[position].caption.toString())
-        intent.putExtra("likes", "-")
+        intent.putExtra("likes", postList[position].like_count.toString())
         intent.putExtra("user_name", postList[position].user?.name.toString())
         intent.putExtra("user_avatar", postList[position].user?.avatar.toString())
         startActivity(intent)

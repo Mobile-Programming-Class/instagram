@@ -22,7 +22,7 @@ data class ResponsePostingGetById(
     var success: Boolean? = null,
 
     @field:SerializedName("data")
-    var data: Post? = null,
+    var data: PostGet? = null,
 
     @field:SerializedName("message")
     var message: String? = null

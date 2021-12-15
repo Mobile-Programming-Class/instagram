@@ -22,7 +22,6 @@
                     android:layout_height="wrap_content">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:layout_toEndOf="@id/profile_user_img"
                     android:id="@+id/insta_status_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

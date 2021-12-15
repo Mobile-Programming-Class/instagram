@@ -61,7 +61,7 @@ class LoginFragment (private var thisContext: MainActivity) : Fragment() {
                         thisContext.user = data.user
                         thisContext.user?.avatar = data.asset_link + data.user?.avatar
 
-                        thisContext.getSupportFragmentManager().beginTransaction().replace(R.id.frame, thisContext.profileFragment).commit()
+                        thisContext.getSupportFragmentManager().beginTransaction().replace(R.id.frame, thisContext.profileFragment!!).commit()
                     } else {
                         Toast.makeText(thisContext, "Response NOT null. access_token IS null",
                             Toast.LENGTH_LONG).show()

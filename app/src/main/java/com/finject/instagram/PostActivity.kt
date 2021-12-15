@@ -21,7 +21,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class PostActivity : AppCompatActivity() {
-    var post: Post? =null
+    var post: PostGet? =null
     var post_id : String? = null
     var post_foto: String? = null
     var post_caption: String? = null

@@ -30,7 +30,7 @@ class PostAdapter (val activity: Context, val postList: ArrayList<PostGet>) : Re
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
 
         p0.name?.text = postList[p1].user?.name
-        p0.likes?.text =  "10 likes" // postList[p1].likes +" "+"likes"
+        p0.likes?.text = postList[p1].like_count!!.toString() +" "+"likes"
         p0.description?.text = postList[p1].caption
 
         Glide.with(activity)

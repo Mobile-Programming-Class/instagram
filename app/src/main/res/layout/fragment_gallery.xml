@@ -4,22 +4,256 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".MainActivity"
+    tools:context=".fragment.GalleryFragment"
     android:fillViewport="true">
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".MainActivity"
-        android:background="@color/white">
+        android:layout_height="wrap_content"
+        tools:context=".fragment.GalleryFragment"
+        android:background="@color/white"
+        android:id="@+id/layoutChoice">
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <RelativeLayout
+            android:id="@+id/searchOption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="0dp" />
+            android:background="@color/white"
+            android:elevation="0dp"
+            android:layout_alignParentStart="true">
+
+            <Button
+                android:id="@+id/btnGallery"
+                android:layout_width="@dimen/bottom_menu_size"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="4dp"
+                android:layout_toStartOf="@+id/add_icon"
+                android:backgroundTint="@color/white"
+                android:text="Gallery"
+                android:textColor="@color/black"
+                app:icon="@drawable/ic_gallery"
+                app:iconTint="@color/black" />
+
+            <ImageView
+                android:id="@+id/add_icon"
+                android:layout_width="@dimen/bottom_menu_size"
+                android:layout_height="@dimen/bottom_menu_size"
+                android:layout_centerInParent="true" />
+
+            <ImageView
+                android:id="@+id/searchUser"
+                android:layout_width="@dimen/bottom_menu_size"
+                android:layout_height="@dimen/bottom_menu_size"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="4dp"
+                android:layout_toEndOf="@+id/add_icon"
+                android:src="@drawable/user" />
+
+            <Button
+                android:id="@+id/btnCamera"
+                android:layout_width="@dimen/bottom_menu_size"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="4dp"
+                android:layout_toEndOf="@+id/add_icon"
+                android:backgroundTint="@color/white"
+                android:text="Camera"
+                android:textColor="@color/black"
+                app:icon="@drawable/ic_camera_"
+                app:iconTint="@color/black" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/searchOption">
+
+            <TextView
+                android:id="@+id/tvPreview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/black"
+                android:layout_margin="12dp"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:text="Preview"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_below="@id/tvPreview"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/post_header_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/logo"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="15dp" />
+
+                        <TextView
+                            android:id="@+id/brand_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_toEndOf="@+id/logo"
+                            android:text="Name"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/menu_img"
+                            android:layout_width="wrap_content"
+                            android:layout_height="22dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="15dp"
+                            android:src="@drawable/ic_menu" />
+
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/post_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/post_header_layout"
+                        android:src="@drawable/placeholderimg"
+                        />
+
+                    <RelativeLayout
+                        android:id="@+id/post_footer_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@id/post_img">
+
+                        <ImageView
+                            android:id="@+id/heart"
+                            android:layout_width="@dimen/footer_menu_size"
+                            android:layout_height="@dimen/footer_menu_size"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="15dp"
+                            android:src="@drawable/ic_heart" />
+
+                        <ImageView
+                            android:id="@+id/reply"
+                            android:layout_width="@dimen/footer_menu_size"
+                            android:layout_height="@dimen/footer_menu_size"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="15dp"
+                            android:layout_toEndOf="@+id/heart"
+                            android:src="@drawable/ic_reply" />
+
+                        <ImageView
+                            android:id="@+id/send"
+                            android:layout_width="@dimen/footer_menu_size"
+                            android:layout_height="@dimen/footer_menu_size"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="15dp"
+                            android:layout_toEndOf="@+id/reply"
+                            android:src="@drawable/ic_send" />
+
+                        <ImageView
+                            android:id="@+id/bookmark"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="15dp"
+                            android:src="@drawable/ic_mini_bookmark" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/likes_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/post_footer_layout"
+                        android:layout_marginStart="15dp"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:text="likes"/>
+
+                    <TextView
+                        android:id="@+id/description_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/likes_txt"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginTop="5dp"
+                        android:textSize="13sp"
+                        android:textColor="@color/black"
+                        android:text="caption"/>
+
+                    <EditText
+                        android:id="@+id/add_caption"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="6dp"
+                        android:background="@null"
+                        android:hint="Add a Caption ..."
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <Button
+                android:id="@+id/btnSendPost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="4dp"
+                android:backgroundTint="@color/white"
+                android:text="Post It"
+                android:textColor="@color/black"
+                app:icon="@drawable/ic_gallery"
+                app:iconTint="@color/black" />
+
+            <Button
+                android:id="@+id/testPredict"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnSendPost"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="4dp"
+                android:backgroundTint="@color/white"
+                android:text="predict caption"
+                android:textColor="@color/black"
+                app:iconTint="@color/black" />
+
+        </RelativeLayout>
 
     </RelativeLayout>
+
 </ScrollView>

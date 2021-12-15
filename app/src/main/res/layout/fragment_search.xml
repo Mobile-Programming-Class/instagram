@@ -75,9 +75,9 @@
                 android:id="@+id/activeSearchPost"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
+                android:layout_below="@id/searchPost"
                 android:layout_alignParentStart="true"
                 android:layout_toStartOf="@+id/add_icon"
-                android:layout_below="@id/searchPost"
                 android:background="@drawable/bg_ic_active" />
 
             <ImageView

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.finject.instagram.data.Count
 import com.finject.instagram.data.Follower
 import com.finject.instagram.data.Post
@@ -17,20 +18,30 @@ import com.finject.instagram.fragment.*
 
 class MainActivity : AppCompatActivity() {
     var refreshListener: Refresh? = null
-    var homeFragment = HomeFragment(this)
-    var searchFragment = SearchFragment()
-    var galleryFragment = GalleryFragment()
-    var favouriteFragment = FavouriteFragment()
-    var profileFragment = ProfileFragment(this)
-    var loginFragment = LoginFragment(this)
+    var homeFragment : Fragment ? = null
+    var searchFragment : Fragment ? = null
+    var galleryFragment : Fragment ? = null
+    var favouriteFragment : Fragment ? = null
+    var profileFragment : Fragment ? = null
+    var loginFragment : Fragment ? = null
 
     var access_token : String ? = null
     var user : User ? = null
     var follower: Count? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        homeFragment = HomeFragment(this)
+        searchFragment = SearchFragment()
+        galleryFragment = GalleryFragment(this)
+        favouriteFragment = FavouriteFragment()
+        profileFragment = ProfileFragment(this)
+        loginFragment = LoginFragment(this)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
 
         val window = window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
@@ -45,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         val profileBtn = findViewById<ImageView>(R.id.profile_icon)
         val insta = findViewById<ImageView>(R.id.insta_img)
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame, homeFragment).commit()
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame, homeFragment!!).commit()
 
         homeBtn.setOnClickListener(clickListener)
         searchBtn.setOnClickListener(clickListener)
@@ -60,22 +71,22 @@ class MainActivity : AppCompatActivity() {
     private val clickListener : View.OnClickListener = View.OnClickListener { view ->
         when (view.id) {
             R.id.home_icon -> {
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame, homeFragment).commit()
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame, homeFragment!!).commit()
             }
             R.id.search_icon -> {
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame, searchFragment).commit()
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame, searchFragment!!).commit()
             }
             R.id.add_icon -> {
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame, galleryFragment).commit()
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame, galleryFragment!!).commit()
             }
             R.id.heart_icon -> {
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame, favouriteFragment).commit()
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame, favouriteFragment!!).commit()
             }
             R.id.profile_icon -> {
                 if (access_token == null || access_token.equals("")) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frame, loginFragment).commit()
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame, loginFragment!!).commit()
                 } else {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frame, profileFragment).commit()
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame, profileFragment!!).commit()
                 }
             }
         }
