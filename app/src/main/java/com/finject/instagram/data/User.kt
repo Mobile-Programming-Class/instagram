@@ -1,7 +1,7 @@
 package com.finject.instagram.data
 
 data class User(
-    val id : Int?,
+    var id : Int?,
     var name : String? = null,
     var email : String? = null,
     var email_verified_at : String? = null,

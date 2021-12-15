@@ -170,7 +170,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/description_txt"
             tools:layout_editor_absoluteX="0dp"
-            tools:listitem="@layout/item_comment"/>
+            tools:listitem="@layout/item_comment" />
 
         <RelativeLayout
             android:id="@+id/comments_layout"

@@ -76,7 +76,7 @@ class PostActivity : AppCompatActivity() {
         // CALL api post
         val networkServices = DataServices.create()
 
-        /*val callPost = networkServices.getPostById(post_id!!)
+        val callPost = networkServices.getPostById(post_id!!)
         callPost.enqueue(object: Callback<ResponsePostingGetById> {
             override fun onFailure(call: Call<ResponsePostingGetById>, t: Throwable) {
                 println("On Failure")
@@ -105,7 +105,7 @@ class PostActivity : AppCompatActivity() {
                 }
             }
         })
-*/
+
         // CALL api comment
         val callComment = networkServices.getCommentByPostId(post_id!!)
         callComment.enqueue(object: Callback<Comment> {

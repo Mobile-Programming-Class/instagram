@@ -12,4 +12,9 @@
 
     <color name="grey">#F2F2F2</color>
     <color name="dark_black">#BCBCBC</color>
+
+    <color name="pink">#C638A6</color>
+    <color name="blue">#3C4FCD</color>
+    <color name="background_color">#21254A</color>
+    <color name="gray">#767C93</color>
 </resources>

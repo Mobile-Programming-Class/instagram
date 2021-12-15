@@ -21,9 +21,13 @@
             android:background="@drawable/circle_border">
 
             <ImageView
+                android:id="@+id/ivAvatarProfile"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:layout_margin="9dp"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="9dp"
+                android:layout_marginBottom="9dp"
                 android:adjustViewBounds="true"
                 android:background="@drawable/circle"
                 android:padding="3dp"
@@ -40,22 +44,11 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15sp"
             android:fontFamily="sans-serif-light"
-            android:text="Joey Tribbiani"
+            android:text="Name"
             android:textSize="32sp" />
 
-
-        <TextView
-            android:id="@+id/tv_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_name"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="sans-serif"
-            android:text="new york, usa"
-            android:textAllCaps="true"
-            android:textSize="14sp" />
-
         <ImageView
+            android:id="@+id/icLogin"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
@@ -90,10 +83,11 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tvFollowersCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="453K"
+                    android:text="-"
                     android:textColor="@color/black"
                     android:textSize="25sp" />
 
@@ -127,10 +121,11 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tvFollowingCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="873"
+                    android:text="-"
                     android:textColor="@color/black"
                     android:textSize="25sp" />
 
@@ -139,10 +134,10 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="following"
-                    android:textStyle="bold"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
-                    android:textSize="13sp" />
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -173,9 +168,10 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/tvEmailProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="joey@sharenofood.com"
+                    android:text="email"
                     android:textColor="@color/black"
                     android:textSize="13sp"
                     android:textStyle="bold" />
@@ -190,9 +186,10 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/tvPhoneNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="+1-202-555-0157"
+                    android:text="number"
                     android:textColor="@color/black"
                     android:textSize="13sp"
                     android:textStyle="bold" />
@@ -212,7 +209,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/bio"
+                    android:id="@+id/tvBio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="bio"

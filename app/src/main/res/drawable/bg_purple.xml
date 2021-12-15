@@ -5,4 +5,5 @@
         android:endColor="@color/purple_2"
         android:angle="225"
         android:type="linear" />
+    <corners android:radius="2dp" />
 </shape>

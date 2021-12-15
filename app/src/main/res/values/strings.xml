@@ -4,4 +4,15 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="login_text">Login</string>
+    <string name="email_text">Email</string>
+    <string name="password_text">Password</string>
+    <string name="forgot_password_text">Forgot Password?</string>
+    <string name="new_here_text">New Here ?</string>
+    <string name="sign_up_text">Sign up</string>
+    <string name="name_text">Name</string>
+    <string name="confirm_password_text">Confirm Password</string>
+    <string name="privacy_text">By creating an account, you agree to the \nTerms and Use and Privacy Policy</string>
+    <string name="already_account_text">Already have an account ?</string>
 </resources>

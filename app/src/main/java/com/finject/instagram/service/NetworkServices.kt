@@ -90,7 +90,7 @@ interface NetworkServices {
     ): Call<Comment>
 
     // http://127.0.0.1:8000/api/comment/by-user-id/13
-    @GET("comment/by-user-id//{id}")
+    @GET("comment/by-user-id/{id}")
     fun getCommentByUserId(@Path("id") id: String): Call<Comment>
 
     // http://127.0.0.1:8000/api/user/comment/create
@@ -120,6 +120,11 @@ interface NetworkServices {
         @Header("Authorization") token: String,
         @Path("id") id: String
     ): Call<General>
+
+    @GET("followers/{id}")
+    fun getFollowersById(
+        @Path("id") id: String
+    ): Call<Follower>
 
 
     /*

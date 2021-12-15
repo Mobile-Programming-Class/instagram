@@ -7,9 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.finject.instagram.MainActivity
 import com.finject.instagram.PostActivity
 import com.finject.instagram.R
@@ -73,6 +75,9 @@ class HomeFragment(private var thisContext: MainActivity) : Fragment(), Refresh,
         // 4. notifyDatasetChange
 
         statusList.clear()
+        if (thisContext.user != null) {
+            statusList.add(Status(thisContext.user?.id!!, thisContext.user?.name!!, thisContext.user?.avatar!!))
+        }
 
 
         val networkServices = DataServices.create()

@@ -22,9 +22,11 @@
                     android:layout_height="wrap_content">
 
                 <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/insta_status_list"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                    android:layout_toEndOf="@id/profile_user_img"
+                    android:id="@+id/insta_status_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/adapter_status_layout">
 
                 </androidx.recyclerview.widget.RecyclerView>
             </RelativeLayout>
@@ -37,12 +39,12 @@
                android:layout_below="@+id/insta_status_layout"></View>
 
             <androidx.recyclerview.widget.RecyclerView
-               android:id="@+id/post_list"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_below="@+id/view"
-               android:visibility="visible"
-            />
+                android:id="@+id/post_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view"
+                android:visibility="visible"
+                tools:listitem="@layout/adapter_post_layout"/>
 
         </RelativeLayout>
 

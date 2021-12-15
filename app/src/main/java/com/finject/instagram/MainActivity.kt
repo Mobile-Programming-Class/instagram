@@ -7,16 +7,26 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
+import com.finject.instagram.data.Count
+import com.finject.instagram.data.Follower
 import com.finject.instagram.data.Post
+import com.finject.instagram.data.User
 import com.finject.instagram.fragment.*
+
 //php artisan serve --host=192.168.0.103 --port=80
+
 class MainActivity : AppCompatActivity() {
     var refreshListener: Refresh? = null
     var homeFragment = HomeFragment(this)
     var searchFragment = SearchFragment()
     var galleryFragment = GalleryFragment()
     var favouriteFragment = FavouriteFragment()
-    var profileFragment = ProfileFragment()
+    var profileFragment = ProfileFragment(this)
+    var loginFragment = LoginFragment(this)
+
+    var access_token : String ? = null
+    var user : User ? = null
+    var follower: Count? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,7 +72,11 @@ class MainActivity : AppCompatActivity() {
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame, favouriteFragment).commit()
             }
             R.id.profile_icon -> {
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame, profileFragment).commit()
+                if (access_token == null || access_token.equals("")) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame, loginFragment).commit()
+                } else {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame, profileFragment).commit()
+                }
             }
         }
     }
