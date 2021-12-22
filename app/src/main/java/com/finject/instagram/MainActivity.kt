@@ -76,6 +76,7 @@ class MainActivity : AppCompatActivity() {
         val favouriteBtn = findViewById<ImageView>(R.id.heart_icon)
         val profileBtn = findViewById<ImageView>(R.id.profile_icon)
         val insta = findViewById<ImageView>(R.id.insta_img)
+        val chat = findViewById<ImageView>(R.id.chat_img)
 
         getSupportFragmentManager().beginTransaction().replace(R.id.frame, homeFragment!!).commit()
 
@@ -85,6 +86,7 @@ class MainActivity : AppCompatActivity() {
         favouriteBtn.setOnClickListener(clickListener)
         profileBtn.setOnClickListener(clickListener)
         insta.setOnClickListener{ refreshListener?.refresh() }
+        chat.setOnClickListener(clickListener)
 
         supportActionBar?.hide()
     }
@@ -109,6 +111,9 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame, profileFragment!!).commit()
                 }
+            }
+            R.id.chat_img -> {
+                openChatActivity()
             }
         }
     }
@@ -138,6 +143,14 @@ class MainActivity : AppCompatActivity() {
                 e.printStackTrace()
             }
         }
+    }
+
+    fun openChatActivity() {
+        val intent = Intent( this, ChatGroupActivity::class.java)
+        intent.putExtra("access_token", access_token.toString() )
+        intent.putExtra("id_user", user?.id.toString() )
+        intent.putExtra("avatar", user?.avatar )
+        startActivity(intent)
     }
 
 }

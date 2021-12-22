@@ -5,19 +5,22 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_img"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentStart="true"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_chat_group"/>
+
     <TextView
         android:id="@+id/brand_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/profile_img"
+        android:layout_toStartOf="@+id/profile_img"
         android:layout_marginStart="10dp"
         android:layout_marginTop="8dp"
         android:textColor="@color/black"
@@ -25,25 +28,15 @@
         android:textStyle="bold"
         android:text="user"
         />
-
     <TextView
         android:id="@+id/description_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/brand_name"
+        android:layout_toStartOf="@+id/profile_img"
         android:layout_marginStart="10dp"
-        android:layout_toEndOf="@+id/profile_img"
-        android:height="40dp"
-        android:text="caption"
+        android:textSize="13sp"
         android:textColor="@color/black"
-        android:textSize="13sp" />
-
-    <ImageView
-        android:id="@+id/post_img"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_margin="8dp"
+        android:text="caption"/>
         />
 </RelativeLayout>

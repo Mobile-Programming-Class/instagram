@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ChatGroupActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="id(s) ex.: 1 3 4"
+        android:layout_margin="8dp"
+        android:enabled="true"
+        app:boxStrokeColor="@color/black"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:boxStrokeErrorColor="#C638A6"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etMemberInput"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/btnCreateGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inputText"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/white"
+        android:text="Create group"
+        android:textColor="@color/black"
+        app:icon="@drawable/ic_chat_group_add"
+        app:iconTint="@color/black" />
+
+    <Button
+        android:id="@+id/refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnCreateGroup"
+        android:layout_centerInParent="true"
+        android:backgroundTint="@color/white"
+        android:padding="8dp"
+        android:text="REFRESH"
+        android:textColor="@color/black"
+        app:icon="@drawable/ic_refresh_group"
+        app:iconTint="@color/black" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerChatGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/refresh"
+        tools:listitem="@layout/item_group_chat"/>
+
+</RelativeLayout>

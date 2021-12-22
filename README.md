@@ -1,22 +1,5 @@
 # instagram
- Final Project PPB 
-
-sign up
-edit profile
-fungsi like
-galeri intent
-post disimpan
-chat
-list status di home
-
-create intent listener in main act
-implement in fragment
-
-if open camera
-    receive uri from camera
-    receive sign from gallery fragment
-    open gallery fragment
-    implement handle on gallery fragment
+ Final Project PPB
 
 
 to test
@@ -25,6 +8,12 @@ to test
     register account TODO: auto login after register
     favourites / post disimpan
     search user
+
+TODO:
+    chat
+        finished adapter group chat
+        todo -> activity groupchat
+    list status di home
 
 lessons
     fragment should have an empty constructor (a constructor without variable need to be passed)

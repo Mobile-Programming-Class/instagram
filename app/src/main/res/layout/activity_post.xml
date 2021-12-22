@@ -172,44 +172,44 @@
             tools:layout_editor_absoluteX="0dp"
             tools:listitem="@layout/item_comment" />
 
-            <RelativeLayout
-                android:id="@+id/comments_layout"
+        <RelativeLayout
+            android:id="@+id/comments_layout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/recyclerViewComment"
+            android:layout_marginTop="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_pic"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:src="@drawable/ic_user" />
+
+            <EditText
+                android:id="@+id/comment_edt"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_below="@id/recyclerViewComment"
-                android:layout_marginTop="10dp">
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toStartOf="@id/sendBtn"
+                android:layout_toEndOf="@id/profile_pic"
+                android:background="@null"
+                android:hint="Add a comment..."
+                android:textColor="@color/black"
+                android:textSize="13sp" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profile_pic"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="15dp"
-                    android:src="@drawable/ic_user" />
+            <ImageView
+                android:id="@+id/sendBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/ic_send_comment" />
 
-                <EditText
-                    android:id="@+id/comment_edt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_toStartOf="@id/sendBtn"
-                    android:layout_toEndOf="@id/profile_pic"
-                    android:background="@null"
-                    android:hint="Add a comment..."
-                    android:textColor="@color/black"
-                    android:textSize="13sp" />
-
-                <ImageView
-                    android:id="@+id/sendBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="15dp"
-                    android:src="@drawable/ic_send_comment" />
-
-            </RelativeLayout>
+        </RelativeLayout>
 
 
 

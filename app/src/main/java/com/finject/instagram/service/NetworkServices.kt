@@ -137,6 +137,32 @@ interface NetworkServices {
         @Path("keyword") keyword: String
     ): Call<ResponseUserByKeyword>
 
+    @GET("user/chat/all")
+    fun getChatGroup(
+        @Header("Authorization") token: String?,
+    ): Call<ResponseGroupChat>
+
+    @GET("user/chat/{id}")
+    fun getChats(
+        @Header("Authorization") token: String?,
+        @Path("id") id: String?
+    ): Call<ResponseChat>
+
+    @FormUrlEncoded
+    @POST("user/chat/create-group")
+    fun createChatGroup(
+        @Header("Authorization") token: String?,
+        @Field("members") members: String?,
+    ): Call<ResponseGroupChat>
+
+    @FormUrlEncoded
+    @POST("user/chat/send-chat")
+    fun sendChat(
+        @Header("Authorization") token: String?,
+        @Field("content") content: String?,
+        @Field("id_chat") id_chat: String,
+        @Field("sentiment") sentiment: String,
+    ): Call<ResponseSendChat>
     /*
     @GET("foto")
     fun getAll(): Call<Post>

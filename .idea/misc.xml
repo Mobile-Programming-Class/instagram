@@ -18,6 +18,7 @@
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/drawable/grad.xml" value="0.22135416666666666" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/drawable/ic_launcher_background.xml" value="0.22135416666666666" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/activity_chat.xml" value="0.25885416666666666" />
+        <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/activity_chat_group.xml" value="0.25677083333333334" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/activity_login.xml" value="0.2713541666666667" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/activity_main.xml" value="0.26268115942028986" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/activity_post.xml" value="0.234375" />
@@ -35,10 +36,14 @@
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/fragment_search.xml" value="0.259375" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/fragment_search_2.xml" value="0.23958333333333334" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/fragment_second.xml" value="0.25885416666666666" />
+        <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/item_chat.xml" value="0.25885416666666666" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/item_chat_group.xml" value="0.25885416666666666" />
+        <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/item_chat_me.xml" value="0.25885416666666666" />
+        <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/item_chat_member.xml" value="0.25677083333333334" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/item_comment.xml" value="0.234375" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/item_favourites.xml" value="0.25885416666666666" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/item_gallery.xml" value="0.25" />
+        <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/item_group_chat.xml" value="0.25885416666666666" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/layout/item_search.xml" value="0.25" />
         <entry key="..\:/developing/project/mobile/instagram/app/src/main/res/menu/menu_main.xml" value="0.259375" />
       </map>

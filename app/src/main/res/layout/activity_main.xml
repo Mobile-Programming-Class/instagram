@@ -33,13 +33,13 @@
                 android:src="@drawable/logonewlite" />
 
             <ImageView
-                    android:id="@+id/send_img"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="15dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_send"/>
+                android:id="@+id/chat_img"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/ic_send" />
 
         </RelativeLayout>
 
