@@ -16,7 +16,7 @@ import com.finject.instagram.data.PostGet
 class CommentAdapter (val comment_list: ArrayList<ItemComment>) : RecyclerView.Adapter<CommentAdapter.ViewHolder>()  {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
-        val view = LayoutInflater.from(p0?.context).inflate(R.layout.adapter_post_layout, p0, false)
+        val view = LayoutInflater.from(p0?.context).inflate(R.layout.item_comment, p0, false)
         return ViewHolder(view);
     }
 

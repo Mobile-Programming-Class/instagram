@@ -1,4 +1,4 @@
-package com.finject.instagram.adapter
+package com.finject.instagram.interfaces
 
 interface GalleryImageClickListener {
     fun onClick(position: Int)

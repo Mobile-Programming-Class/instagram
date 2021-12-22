@@ -28,6 +28,18 @@ data class ResponsePostingGetById(
     var message: String? = null
 )
 
+data class ResponseFavourites(
+
+    @field:SerializedName("success")
+    var success: Boolean? = null,
+
+    @field:SerializedName("data")
+    var data: MutableList<PostGet?>? = null,
+
+    @field:SerializedName("message")
+    var message: String? = null
+)
+
 // See General
 //http://127.0.0.1:8000/api/user/posting
 //http://127.0.0.1:8000/api/user/posting/45

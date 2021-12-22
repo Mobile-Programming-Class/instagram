@@ -14,9 +14,8 @@
             android:id="@+id/logo"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginStart="15dp"
             android:layout_centerVertical="true"
-        />
+            android:layout_marginStart="15dp" />
 
         <TextView
             android:id="@+id/brand_name"
@@ -56,13 +55,12 @@
         android:layout_below="@+id/post_img">
 
         <ImageView
-           android:id="@+id/heart"
-           android:layout_width="@dimen/footer_menu_size"
-           android:layout_height="@dimen/footer_menu_size"
-           android:layout_centerVertical="true"
-           android:layout_marginStart="15dp"
-           android:src="@drawable/ic_heart"
-        />
+            android:id="@+id/heart"
+            android:layout_width="@dimen/footer_menu_size"
+            android:layout_height="@dimen/footer_menu_size"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/ic_heart" />
 
         <ImageView
            android:id="@+id/reply"

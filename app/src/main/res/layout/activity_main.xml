@@ -30,7 +30,7 @@
                 android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:src="@drawable/ic_insta" />
+                android:src="@drawable/logonewlite" />
 
             <ImageView
                     android:id="@+id/send_img"

@@ -79,9 +79,14 @@ interface NetworkServices {
     //http://127.0.0.1:8000/api/user/liking/44
     @GET("user/liking/{id}")
     fun liking(
-        @Header("Authorization") token: String,
-        @Path("id") id: String
+        @Header("Authorization") token: String?,
+        @Path("id") id: String?
     ): Call<General>
+
+    @GET("user/favourites")
+    fun getFavouritesPosts(
+        @Header("Authorization") token: String?
+    ): Call<ResponsePostingGetAll>
 
     // http://127.0.0.1:8000/api/comment/by-post-id/44
     @GET("comment/by-post-id/{id}")
@@ -126,6 +131,11 @@ interface NetworkServices {
         @Path("id") id: String
     ): Call<Follower>
 
+    // http://192.168.0.108:80/api/search-user/{keyword}
+    @GET("search-user/{keyword}")
+    fun getUserByKeyword(
+        @Path("keyword") keyword: String
+    ): Call<ResponseUserByKeyword>
 
     /*
     @GET("foto")

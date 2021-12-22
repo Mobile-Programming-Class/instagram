@@ -16,7 +16,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvSearch"
-            android:layout_width="320dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:background="@drawable/glass"
             app:cardElevation="0dp">
@@ -51,67 +51,11 @@
             android:src="@drawable/ic_search_dark"
             tools:ignore="ButtonStyle" />
 
-        <RelativeLayout
-            android:id="@+id/searchOption"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/cvSearch"
-            android:background="@color/white"
-            android:elevation="0dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true">
-
-            <ImageView
-                android:id="@+id/searchPost"
-                android:layout_width="@dimen/bottom_menu_size"
-                android:layout_height="@dimen/bottom_menu_size"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginBottom="4dp"
-                android:layout_toStartOf="@+id/add_icon"
-                android:src="@drawable/ic_post" />
-
-            <TextView
-                android:id="@+id/activeSearchPost"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_below="@id/searchPost"
-                android:layout_alignParentStart="true"
-                android:layout_toStartOf="@+id/add_icon"
-                android:background="@drawable/bg_ic_active" />
-
-            <ImageView
-                android:id="@+id/add_icon"
-                android:layout_width="@dimen/bottom_menu_size"
-                android:layout_height="@dimen/bottom_menu_size"
-                android:layout_centerInParent="true" />
-
-            <ImageView
-                android:id="@+id/searchUser"
-                android:layout_width="@dimen/bottom_menu_size"
-                android:layout_height="@dimen/bottom_menu_size"
-                android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true"
-                android:layout_toEndOf="@+id/add_icon"
-                android:layout_marginBottom="4dp"
-                android:src="@drawable/user"
-                />
-            <TextView
-                android:id="@+id/activeSearchUser"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_alignParentEnd="true"
-                android:layout_toEndOf="@+id/add_icon"
-                android:layout_below="@id/searchPost"
-                android:background="@drawable/bg_ic_active" />
-
-</RelativeLayout>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/searchOption"
+            android:layout_below="@id/btnSearch"
             android:layout_marginTop="8dp"
             android:padding="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

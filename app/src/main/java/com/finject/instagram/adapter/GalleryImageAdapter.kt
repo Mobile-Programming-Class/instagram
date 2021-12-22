@@ -11,6 +11,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 
 import com.finject.instagram.R
 import com.finject.instagram.data.Post
+import com.finject.instagram.interfaces.GalleryImageClickListener
 
 class GalleryImageAdapter(private val itemList: List<Post>) : RecyclerView.Adapter<GalleryImageAdapter.ViewHolder>() {
     private var context: Context? = null

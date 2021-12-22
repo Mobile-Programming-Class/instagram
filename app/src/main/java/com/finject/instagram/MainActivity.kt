@@ -1,23 +1,42 @@
 package com.finject.instagram
 
+import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import android.view.WindowManager
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.finject.instagram.data.Count
-import com.finject.instagram.data.Follower
-import com.finject.instagram.data.Post
 import com.finject.instagram.data.User
 import com.finject.instagram.fragment.*
+import com.finject.instagram.interfaces.HandleCameraIntent
+import com.finject.instagram.interfaces.HandleGalleryIntent
+import com.finject.instagram.interfaces.LaunchIntent
+import com.finject.instagram.interfaces.Refresh
+import com.finject.instagram.service.SessionManager
+import java.io.IOException
 
 //php artisan serve --host=192.168.0.103 --port=80
 
 class MainActivity : AppCompatActivity() {
+
+    private val PICK_IMAGE_REQUEST = 71
+    private val CAMERA_REQUEST = 1888
+    var photo : Bitmap ? = null
+    var imgBase64 : String ? = null
+    var filePath: Uri? = null
+
     var refreshListener: Refresh? = null
+    var handleCameraIntent: HandleCameraIntent? = null
+    var handleGalleryIntent: HandleGalleryIntent?= null
+    var launchIntent : LaunchIntent ?= null
+
     var homeFragment : Fragment ? = null
     var searchFragment : Fragment ? = null
     var galleryFragment : Fragment ? = null
@@ -29,19 +48,21 @@ class MainActivity : AppCompatActivity() {
     var user : User ? = null
     var follower: Count? = null
 
+    var sessionManager : SessionManager ? = null;
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         homeFragment = HomeFragment(this)
-        searchFragment = SearchFragment()
+        searchFragment = SearchFragment(this)
         galleryFragment = GalleryFragment(this)
-        favouriteFragment = FavouriteFragment()
+        favouriteFragment = FavouriteFragment(this)
         profileFragment = ProfileFragment(this)
         loginFragment = LoginFragment(this)
 
+        sessionManager = SessionManager(this)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
 
         val window = window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
@@ -88,6 +109,33 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame, profileFragment!!).commit()
                 }
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // handle intent camera
+        if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
+            photo = data?.extras?.get("data") as Bitmap
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame, galleryFragment!!).commit()
+
+            handleCameraIntent?.handleCameraIntent( photo )
+        }
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
+            if(data == null || data.data == null){
+                return
+            }
+
+            filePath = data.data
+            try {
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame, galleryFragment!!).commit()
+                handleGalleryIntent?.handleGalleryIntent( filePath )
+            } catch (e: IOException) {
+                e.printStackTrace()
             }
         }
     }

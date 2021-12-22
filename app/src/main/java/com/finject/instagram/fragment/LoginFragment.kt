@@ -1,5 +1,6 @@
 package com.finject.instagram.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,23 +9,30 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.finject.instagram.MainActivity
+import com.finject.instagram.PostActivity
 import com.finject.instagram.R
+import com.finject.instagram.RegisterActivity
 import com.finject.instagram.data.ResponseLogin
 import com.finject.instagram.data.ResponsePostingGetById
 import com.finject.instagram.service.DataServices
+import com.finject.instagram.service.SessionManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginFragment (private var thisContext: MainActivity) : Fragment() {
+class LoginFragment (private var thisContext: MainActivity ?= null) : Fragment() {
 
     lateinit var etEmail : EditText
     lateinit var etPassword : EditText
     lateinit var btnLogin : Button
+    lateinit var textSignUP : TextView
+
+    private lateinit var sessionManager: SessionManager
 
     override fun onCreateView(inflater: LayoutInflater, parent: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_login, parent, false)
 
+        sessionManager = SessionManager( thisContext!! )
         initItem(view)
 
         return view
@@ -34,8 +42,10 @@ class LoginFragment (private var thisContext: MainActivity) : Fragment() {
         etEmail = view.findViewById<EditText>(R.id.etEmail)
         etPassword = view.findViewById<EditText>(R.id.etPassword)
         btnLogin = view.findViewById<Button>(R.id.btnLogin)
+        textSignUP = view.findViewById(R.id.textSignUP)
 
         btnLogin.setOnClickListener { login() }
+        textSignUP.setOnClickListener { openRegisterAcitivity() }
     }
 
     fun login() {
@@ -57,20 +67,28 @@ class LoginFragment (private var thisContext: MainActivity) : Fragment() {
                     Toast.makeText(thisContext, "Response body not null",
                         Toast.LENGTH_LONG).show()
                     if ( !data.access_token.equals("") ) {
-                        thisContext.access_token = data.access_token
-                        thisContext.user = data.user
-                        thisContext.user?.avatar = data.asset_link + data.user?.avatar
+                        thisContext!!.access_token = data.access_token
+                        thisContext!!.user = data.user
+                        thisContext!!.user?.avatar = data.asset_link + data.user?.avatar
 
-                        thisContext.getSupportFragmentManager().beginTransaction().replace(R.id.frame, thisContext.profileFragment!!).commit()
+                        sessionManager.saveAuthToken( data.access_token )
+
+                        thisContext!!.getSupportFragmentManager().beginTransaction().replace(R.id.frame, thisContext!!.profileFragment!!).commit()
                     } else {
-                        Toast.makeText(thisContext, "Response NOT null. access_token IS null",
+                        Toast.makeText(thisContext!!, "Response NOT null. access_token IS null",
                             Toast.LENGTH_LONG).show()
                     }
                 } else {
-                    Toast.makeText(thisContext, "Response Body Null on login",
+                    Toast.makeText(thisContext!!, "Response Body Null on login",
                         Toast.LENGTH_LONG).show()
                 }
             }
         })
+    }
+
+
+    fun openRegisterAcitivity() {
+        val intent = Intent( thisContext!!, RegisterActivity::class.java)
+        startActivity(intent)
     }
 }

@@ -7,38 +7,44 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.finject.instagram.MainActivity
-import com.finject.instagram.PostActivity
-import com.finject.instagram.R
-import com.finject.instagram.Refresh
-import com.finject.instagram.adapter.GalleryImageClickListener
+import com.finject.instagram.*
+import com.finject.instagram.interfaces.GalleryImageClickListener
 import com.finject.instagram.adapter.PostAdapter
 import com.finject.instagram.adapter.StatusAdapter
 import com.finject.instagram.data.*
+import com.finject.instagram.interfaces.LikeListener
+import com.finject.instagram.interfaces.Refresh
 import com.finject.instagram.service.DataServices
 import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeFragment(private var thisContext: MainActivity) : Fragment(), Refresh, GalleryImageClickListener {
+class HomeFragment(private var thisContext: MainActivity ? = null) : Fragment(), Refresh,
+    GalleryImageClickListener,
+    LikeListener {
 
     val statusList = ArrayList<Status>()
     val postList = ArrayList<PostGet>()
     lateinit var instaStatusList : RecyclerView
     lateinit var postAdapter : PostAdapter
 
+    init {
+        if (thisContext == null ) {
+            thisContext = activity as MainActivity
+            thisContext?.refreshListener = this
+        }
+    }
+
     override fun onCreateView(inflater: LayoutInflater, parent: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view = inflater.inflate(R.layout.fragment_home, parent, false)
 
         val activity = activity as Context
-        thisContext.refreshListener = this
+        thisContext?.refreshListener = this
 
         instaStatusList = view.findViewById<RecyclerView>(R.id.insta_status_list)
         val postViewList = view.findViewById<RecyclerView>(R.id.post_list)
@@ -64,9 +70,41 @@ class HomeFragment(private var thisContext: MainActivity) : Fragment(), Refresh,
 
         postAdapter = PostAdapter(activity, postList)
         postAdapter.listener = this
+        postAdapter.listenerLike = this
         postViewList.adapter = postAdapter
 
         return view
+    }
+
+    override fun onClickLikeIt (position: Int) {
+        val networkServices = DataServices.create()
+        val call = networkServices.liking( "Bearer " + thisContext?.access_token?.toString(), position.toString() )
+
+        call.enqueue(object: Callback<General> {
+            override fun onFailure(call: Call<General>, t: Throwable) {
+                println("On Failure")
+                println(t.message)
+                Toast.makeText(thisContext?.applicationContext, "Failed Getting Response" + t.message,
+                    Toast.LENGTH_LONG).show()
+            }
+            override fun onResponse(call: Call<General>, response: Response<General>) {
+                Toast.makeText(thisContext?.applicationContext, "Success Getting Response",
+                    Toast.LENGTH_LONG).show()
+                if (response.body() != null) {
+                    val data: General = response.body()!!
+                    Toast.makeText(thisContext?.applicationContext, "Response body not null",
+                        Toast.LENGTH_LONG).show()
+                    if (data.data!!.isNotEmpty()) {
+                        Toast.makeText(thisContext?.applicationContext, data.data.toString(),
+                            Toast.LENGTH_LONG).show()
+
+                    }
+                } else {
+                    Toast.makeText(thisContext?.applicationContext, "Response Body Null on get fun",
+                        Toast.LENGTH_LONG).show()
+                }
+            }
+        })
     }
 
     override fun refresh () {
@@ -76,8 +114,8 @@ class HomeFragment(private var thisContext: MainActivity) : Fragment(), Refresh,
         // 4. notifyDatasetChange
 
         statusList.clear()
-        if (thisContext.user != null) {
-            statusList[0] = Status(thisContext.user?.id!!, thisContext.user?.name!!, thisContext.user?.avatar!!)
+        if (thisContext?.user != null) {
+            statusList.add( Status(thisContext?.user?.id!!, thisContext?.user?.name!!, thisContext?.user?.avatar!!) )
             instaStatusList.adapter?.notifyDataSetChanged()
         }
 
@@ -90,15 +128,15 @@ class HomeFragment(private var thisContext: MainActivity) : Fragment(), Refresh,
             override fun onFailure(call: Call<ResponsePostingGetAll>, t: Throwable) {
                 println("On Failure")
                 println(t.message)
-                Toast.makeText(thisContext.applicationContext, "Failed Getting Response" + t.message,
+                Toast.makeText(thisContext?.applicationContext, "Failed Getting Response" + t.message,
                     Toast.LENGTH_LONG).show()
             }
             override fun onResponse(call: Call<ResponsePostingGetAll>, response: Response<ResponsePostingGetAll>) {
-                Toast.makeText(thisContext.applicationContext, "Success Getting Response",
+                Toast.makeText(thisContext?.applicationContext, "Success Getting Response",
                     Toast.LENGTH_LONG).show()
                 if (response.body() != null) {
                     val data: ResponsePostingGetAll = response.body()!!
-                    Toast.makeText(thisContext.applicationContext, "Response body not null",
+                    Toast.makeText(thisContext?.applicationContext, "Response body not null",
                         Toast.LENGTH_LONG).show()
                     if (data.data!!.isNotEmpty()) {
                         postList.clear()
@@ -129,7 +167,7 @@ class HomeFragment(private var thisContext: MainActivity) : Fragment(), Refresh,
                         }
                     }
                 } else {
-                    Toast.makeText(thisContext.applicationContext, "Response Body Null on get fun",
+                    Toast.makeText(thisContext?.applicationContext, "Response Body Null on get fun",
                         Toast.LENGTH_LONG).show()
                 }
             }
@@ -137,13 +175,14 @@ class HomeFragment(private var thisContext: MainActivity) : Fragment(), Refresh,
     }
 
     override fun onClick(position: Int) {
-        val intent = Intent(thisContext, PostActivity::class.java)
+        val intent = Intent( thisContext!!, PostActivity::class.java)
         intent.putExtra("post_id", postList[position].id.toString())
         intent.putExtra("post_foto", postList[position].foto.toString())
         intent.putExtra("post_caption", postList[position].caption.toString())
         intent.putExtra("likes", postList[position].like_count.toString())
         intent.putExtra("user_name", postList[position].user?.name.toString())
         intent.putExtra("user_avatar", postList[position].user?.avatar.toString())
+        intent.putExtra("access_token", thisContext?.access_token.toString() )
         startActivity(intent)
     }
 }

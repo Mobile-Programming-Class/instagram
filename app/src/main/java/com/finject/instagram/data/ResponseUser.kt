@@ -29,3 +29,16 @@ data class ResponseProfileById(
     @field:SerializedName("message")
     var message: String? = null
 )
+
+// http://192.168.0.108:80/api/search-user/{keyword}
+data class ResponseUserByKeyword(
+
+    @field:SerializedName("success")
+    var success: Boolean? = null,
+
+    @field:SerializedName("data")
+    var data: MutableList<User?> ?= null,
+
+    @field:SerializedName("message")
+    var message: String? = null
+)

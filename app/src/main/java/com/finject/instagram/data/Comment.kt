@@ -16,7 +16,7 @@ data class Comment(
 
 data class ItemComment(
 
-    @field:SerializedName("success")
+    @field:SerializedName("id")
     var id : Int? = null,
 
     @field:SerializedName("isi")

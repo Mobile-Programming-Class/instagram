@@ -12,18 +12,18 @@ import com.bumptech.glide.Glide
 import com.finject.instagram.MainActivity
 
 import com.finject.instagram.R
-import com.finject.instagram.Refresh
+import com.finject.instagram.interfaces.Refresh
 import com.finject.instagram.adapter.GalleryImageAdapter
-import com.finject.instagram.adapter.GalleryImageClickListener
+import com.finject.instagram.interfaces.GalleryImageClickListener
 import com.finject.instagram.data.Follower
 import com.finject.instagram.data.Post
-import com.finject.instagram.data.ResponsePostingGetById
 import com.finject.instagram.service.DataServices
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ProfileFragment(var thisContext: MainActivity) : Fragment(), GalleryImageClickListener, Refresh {
+class ProfileFragment(var thisContext: MainActivity) : Fragment(), GalleryImageClickListener,
+    Refresh {
 
     private val SPAN_COUNT = 3
     private val imageList = ArrayList<Post>()

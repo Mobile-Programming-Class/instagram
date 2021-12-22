@@ -58,6 +58,8 @@ data class PostGet(
     @field:SerializedName("like_count")
     var like_count: Int? = null
 )
+
+
 /*
 "id": 44,
 "foto": "foto-44.jpeg",

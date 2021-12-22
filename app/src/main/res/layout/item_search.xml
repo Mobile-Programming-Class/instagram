@@ -32,11 +32,14 @@
         android:text="id" />
 
     <TextView
-        android:id="@+id/tvCaption"
+        android:id="@+id/tvName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvIdLabel"
         android:layout_alignLeft="@id/tvIdLabel"
         android:layout_marginTop="4dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="14sp"
         android:text="Caption" />
 </RelativeLayout>

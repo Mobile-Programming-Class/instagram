@@ -7,10 +7,22 @@
         tools:context=".fragment.HomeFragment">
 
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:text="Favourite"/>
+        android:id="@+id/refresh"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:text="REFRESH"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerFavourites"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/refresh"
+        tools:listitem="@layout/item_favourites"/>
 
 </RelativeLayout>

@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:elevation="0dp"
+            android:layout_margin="8dp"
             android:layout_alignParentStart="true">
 
             <Button
@@ -249,6 +250,18 @@
                 android:layout_marginBottom="4dp"
                 android:backgroundTint="@color/white"
                 android:text="predict caption"
+                android:textColor="@color/black"
+                app:iconTint="@color/black" />
+
+            <Button
+                android:id="@+id/btnCheckPhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/testPredict"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="4dp"
+                android:backgroundTint="@color/white"
+                android:text="check previous photo"
                 android:textColor="@color/black"
                 app:iconTint="@color/black" />
 
